@@ -22,12 +22,12 @@ function HeroSection() {
             Web Developer | Front end Pogrammer
           </p>
           <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row sm:justify-center lg:justify-start items-center gap-3 sm:gap-4">
-            <button className="bg-teal-500 text-black font-bold py-2.5 px-6 sm:py-3 sm:px-8 rounded-md hover:bg-teal-600 transition-all duration-300 w-60 sm:w-auto text-xs sm:text-sm md:text-base cursor-pointer">
-              Resume
-            </button>
-            <button className="border border-teal-500 text-teal-700 font-bold py-2.5 px-6 sm:py-3 sm:px-8 rounded-md hover:bg-teal-500 hover:text-black transition-all duration-300 w-60 sm:w-auto text-xs sm:text-sm md:text-base cursor-pointer">
-              Hire Me
-            </button>
+            <a href="/assets/paciello-curriculum-vitae.pdf" download="/assets/paciello-curriculum-vitae.pdf"><button className="bg-teal-500 text-black font-bold py-2.5 px-6 sm:py-3 sm:px-8 rounded-md hover:bg-teal-600 transition-all duration-300 w-60 sm:w-auto text-xs sm:text-sm md:text-base cursor-pointer">
+              Curriculo
+            </button></a>
+            <a  target="_blank"><button className="border border-teal-500 text-teal-700 font-bold py-2.5 px-6 sm:py-3 sm:px-8 rounded-md hover:bg-teal-500 hover:text-black transition-all duration-300 w-60 sm:w-auto text-xs sm:text-sm md:text-base cursor-pointer">
+              Conecte!
+            </button></a>
           </div>
         </div>
       </div>
