@@ -16,7 +16,7 @@ function AboutSection() {
       <div className="container mx-auto flex flex-col lg:flex-row-reverse items-center justify-center gap-8 lg:gap-44  w-full">
         <div className="w-60 flex justify-center lg:justify-end rounded-2xl p-1 lg:w-100 relative">
           <img
-            src="./assets/eu.jpg"
+            src="/assets/eu.jpg"
             alt="Minha foto"
             className="rounded-4xl"
           />

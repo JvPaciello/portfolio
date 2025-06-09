@@ -9,7 +9,7 @@ const projects = [
     description: 'Plataforma para conectar animais de estimação necessitados com lares amorosos. Inclui perfis de animais, formulários de adoção e sistema de gerenciamento.',
     liveUrl: 'https://adotecomamor.vercel.app/',
     githubUrl: 'https://github.com/JvPaciello/adopt-me',
-    image: '../../assets/adote-com-amor.png' ,
+    image: '    /assets/adote-com-amor.png' ,
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const projects = [
     description: 'Ferramenta online para conversão de arquivos PDF, oferecendo diversas opções como  Word, JPG, Excel para PDF.',
     liveUrl: 'https://www.converterpdfbr.com.br/',
     githubUrl: 'https://github.com/JvPaciello/conversor-pdf', 
-    image: '../../assets/converter-pdf-br.png' 
+    image: '/assets/converter-pdf-br.png' 
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const projects = [
     description: 'Projeto final de curso da Udacity, demonstrando habilidades em desenvolvimento web front-end e consumo de APIs externas.',
     liveUrl: 'https://udacity-final-project.vercel.app/',
     githubUrl: 'https://github.com/JvPaciello/udacity-final-redux', 
-    image: '../../assets/udacity-final-captura.png' 
+    image: '/assets/udacity-final-captura.png' 
   },
   {
     id: 4,
@@ -39,7 +39,7 @@ const projects = [
     description: 'Uma estante virtual para organizar e descobrir livros. Permite aos usuários catalogar suas leituras e explorar novos títulos.',
     liveUrl: 'https://estante.vercel.app/',
     githubUrl: 'https://github.com/JvPaciello/udacity-project', 
-    image: '../../assets/estante.vercel.app_.png' 
+    image: '/assets/estante.vercel.app_.png' 
   },
 ];
 
