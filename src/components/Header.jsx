@@ -43,7 +43,7 @@ const Header = () => {
         <div className="absolute top-16 left-0 w-full bg-black/50 shadow-md py-5 px-6 flex flex-col gap-4 lg:hidden z-20">
           <a href="#home" className="text-gray-100 hover:text-teal-700 transition">Início</a>
           <a href="#about" className="text-gray-100 hover:text-teal-700 transition">Sobre</a>
-          <a href="#" className="text-gray-100 hover:text-teal-700 transition">Projetos</a>
+          <a href="#projects" className="text-gray-100 hover:text-teal-700 transition">Projetos</a>
         </div>
       )}
     </header>
