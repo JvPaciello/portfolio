@@ -47,6 +47,17 @@ const projects = [
     githubUrl: "https://github.com/JvPaciello/udacity-project",
     image: "/assets/estante.vercel.app_.png",
   },
+  {
+    id: 5,
+    title: "Site de perguntas e respostas anônimas",
+    client: "Leitores Independentes",
+    tags: ["Node", "Express", "HTTP routes", "Sequelize", "MySql"],
+    description:
+      "Projeto desenvolvido durante um curso de Node.js com o objetivo de praticar conceitos fundamentais de back-end, como rotas, requisições HTTP, integração com banco de dados e renderização no servidor.",
+    liveUrl: "https://ejs-bflr.onrender.com/",
+    githubUrl: "https://github.com/JvPaciello/EJS",
+    image: "/assets/perguntas.png",
+  },
 ];
 
 const ProjectCard = ({ project }) => {
@@ -57,10 +68,11 @@ const ProjectCard = ({ project }) => {
   };
   return (
     <motion.div
-    initial={{opacity: 0 }}
-    whileInView={{opacity: 1}}
-    transition={transition}
-    className="flex flex-col mt-10 md:flex-row items-center justify-between bg-zinc-900 rounded-lg p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] w-full max-w-4xl mx-auto mb-8 lg:mt-10">
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={transition}
+      className="flex flex-col mt-10 md:flex-row items-center justify-between bg-zinc-900 rounded-lg p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] w-full max-w-4xl mx-auto mb-8 lg:mt-10"
+    >
       <div className="flex-shrink-0 mb-6 md:mb-0 md:mr-8 w-full md:w-1/2">
         <img
           src={project.image}
@@ -75,11 +87,12 @@ const ProjectCard = ({ project }) => {
       </div>
 
       <div className="flex-grow w-full md:w-1/2 text-left">
-        <motion.h3 
-        initial={{x: -20, opacity: 0}}
-        whileInView={{x: 0, opacity: 1}}
-        transition={transition}
-        className="text-3xl sm:text-4xl font-bold text-white mb-2">
+        <motion.h3
+          initial={{ x: -20, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={transition}
+          className="text-3xl sm:text-4xl font-bold text-white mb-2"
+        >
           {project.title}
         </motion.h3>
 
@@ -148,7 +161,7 @@ function ProjectsSection() {
     duration: 0.6,
     delay: 0.4,
     ease: [1, 0.71, 0.2, 1.01],
-  }
+  };
 
   return (
     <div
@@ -157,11 +170,12 @@ function ProjectsSection() {
     >
       <div className="container mx-auto flex flex-col lg:flex-row gap-8 lg:gap-12 w-full">
         <div className="w-full text-center lg:text-left mt-6 text-teal-700">
-          <motion.h1 
-          initial={{rotate: 10,opacity: 0}}
-          whileInView={{rotate: 0 ,opacity: 1}}
-          transition={transition}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-teal-700 mt-6">
+          <motion.h1
+            initial={{ rotate: 10, opacity: 0 }}
+            whileInView={{ rotate: 0, opacity: 1 }}
+            transition={transition}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-teal-700 mt-6"
+          >
             Meus Projetos
           </motion.h1>
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mt-1">

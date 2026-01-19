@@ -4,6 +4,7 @@ import {
   DiCss3,
   DiHtml5,
   DiBootstrap,
+  DiNodejs,
 } from "react-icons/di";
 import { SiTailwindcss } from "react-icons/si";
 
@@ -95,6 +96,10 @@ function AboutSection() {
               <div className="flex flex-col items-center hover:text-teal-700 transition duration-300">
                 <SiTailwindcss className="hover:text-blue-400" />
                 <span className="text-sm mt-1">TailwindCSS</span>
+              </div>
+              <div className="flex flex-col items-center hover:text-teal-700 transition duration-300">
+                <DiNodejs className="hover:text-green-400" />
+                <span className="text-sm mt-1">Node</span>
               </div>
             </div>
           </motion.div>

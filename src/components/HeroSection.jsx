@@ -42,7 +42,7 @@ function HeroSection() {
             Web Developer
           </h2>
           <p className="text-gray-400 text-base sm:text-lg md:text-xl mt-2 sm:mt-3">
-            Web Developer | Front end Pogrammer
+            Web Developer | Pogrammer
           </p>
           <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row sm:justify-center lg:justify-start items-center gap-3 sm:gap-4">
             <a
