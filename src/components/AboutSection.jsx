@@ -22,7 +22,7 @@ function AboutSection() {
   return (
     <div
       id="about"
-      className="min-h-screen bg-black flex flex-col items-left justify-center overflow-hidden text-left p-8 pt-24 pb-12 lg:pt-3"
+      className="min-h-screen flex flex-col items-left justify-center overflow-hidden text-left p-8 pt-24 pb-12 lg:pt-3"
     >
       <div className="container mx-auto flex flex-col lg:flex-row-reverse items-center justify-center gap-8 lg:gap-44  w-full">
         <div className="w-60 flex justify-center lg:justify-end rounded-2xl p-1 lg:w-100 relative">

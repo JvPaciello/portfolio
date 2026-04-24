@@ -17,7 +17,7 @@ function HeroSection() {
   return (
     <div
       id="home"
-      className="min-h-screen bg-black flex flex-col items-left justify-center overflow-hidden text-left p-10 pt-24 pb-12 "
+      className="min-h-screen flex flex-col items-left justify-center overflow-hidden text-left p-10 pt-24 pb-12 "
     >
       <div className="container mx-auto flex flex-col lg:flex-row-reverse items-center gap-8 lg:gap-12 w-full">
         <motion.div 
