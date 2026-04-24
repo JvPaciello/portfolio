@@ -1,26 +1,33 @@
-import { FaGithub } from "react-icons/fa";
-// eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion";
+import { useLayoutEffect, useRef } from "react";
+import { FaGithub, FaArrowRight } from "react-icons/fa";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
     id: 1,
     title: "Adote Com Amor",
     client: "Comunidade de Adoção",
+    year: "2023",
+    discipline: "Plataforma social",
     tags: ["React", "HTML", "CSS"],
     description:
       "Plataforma para conectar animais de estimação necessitados com lares amorosos. Inclui perfis de animais, formulários de adoção e sistema de gerenciamento.",
     liveUrl: "https://adotecomamor.vercel.app/",
     githubUrl: "https://github.com/JvPaciello/adopt-me",
-    image: "    /assets/adote-com-amor.png",
+    image: "/assets/adote-com-amor.png",
   },
   {
     id: 2,
     title: "Converter PDF BR",
     client: "Ferramentas Digitais",
-    tags: ["Next.js", "JavaScript vanilla", "HTML", "CSS"],
+    year: "2024",
+    discipline: "Produto / SaaS",
+    tags: ["Next.js", "JavaScript", "HTML", "CSS"],
     description:
-      "Ferramenta online para conversão de arquivos PDF, oferecendo diversas opções como  Word, JPG, Excel para PDF.",
+      "Ferramenta online para conversão de arquivos PDF, oferecendo diversas opções como Word, JPG e Excel para PDF.",
     liveUrl: "https://www.converterpdfbr.com.br/",
     githubUrl: "https://github.com/JvPaciello/conversor-pdf",
     image: "/assets/converter-pdf-br.png",
@@ -29,7 +36,9 @@ const projects = [
     id: 3,
     title: "Udacity Final Project",
     client: "Udacity Student",
-    tags: ["React", "Redux", "CSS", "APIs", "HTML"],
+    year: "2022",
+    discipline: "Estudo de caso",
+    tags: ["React", "Redux", "APIs", "CSS"],
     description:
       "Projeto final de curso da Udacity, demonstrando habilidades em desenvolvimento web front-end e consumo de APIs externas.",
     liveUrl: "https://udacity-final-project.vercel.app/",
@@ -40,7 +49,9 @@ const projects = [
     id: 4,
     title: "Estante Digital",
     client: "Leitores Independentes",
-    tags: ["React", "API REST", "Design Responsivo"],
+    year: "2022",
+    discipline: "Aplicação web",
+    tags: ["React", "API REST", "Responsivo"],
     description:
       "Uma estante virtual para organizar e descobrir livros. Permite aos usuários catalogar suas leituras e explorar novos títulos.",
     liveUrl: "https://estante.vercel.app/",
@@ -49,9 +60,11 @@ const projects = [
   },
   {
     id: 5,
-    title: "Site de perguntas e respostas anônimas",
-    client: "Leitores Independentes",
-    tags: ["Node", "Express", "HTTP routes", "Sequelize", "MySql"],
+    title: "Perguntas & Respostas",
+    client: "Projeto de Curso",
+    year: "2023",
+    discipline: "Back-end",
+    tags: ["Node", "Express", "Sequelize", "MySQL"],
     description:
       "Projeto desenvolvido durante um curso de Node.js com o objetivo de praticar conceitos fundamentais de back-end, como rotas, requisições HTTP, integração com banco de dados e renderização no servidor.",
     liveUrl: "https://ejs-bflr.onrender.com/",
@@ -60,137 +73,243 @@ const projects = [
   },
 ];
 
-const ProjectCard = ({ project }) => {
-  const transition = {
-    duration: 0.6,
-    delay: 0.4,
-    ease: [0, 0.5, 0.2, 2.01],
-  };
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={transition}
-      className="flex flex-col mt-10 md:flex-row items-center justify-between bg-zinc-900 rounded-lg p-6 shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] w-full max-w-4xl mx-auto mb-8 lg:mt-10"
-    >
-      <div className="flex-shrink-0 mb-6 md:mb-0 md:mr-8 w-full md:w-1/2">
-        <img
-          src={project.image}
-          alt={`Preview do projeto ${project.title}`}
-          className="rounded-md w-full h-auto object-cover border-2 border-teal-500"
-          onError={(e) => {
-            e.target.onerror = null;
-            e.target.src =
-              "https://placehold.co/600x400/1e293b/cbd5e1?text=Imagem+Nao+Encontrada";
-          }}
-        />
-      </div>
-
-      <div className="flex-grow w-full md:w-1/2 text-left">
-        <motion.h3
-          initial={{ x: -20, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={transition}
-          className="text-3xl sm:text-4xl font-bold text-white mb-2"
-        >
-          {project.title}
-        </motion.h3>
-
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.tags.map((tag, index) => (
-            <span
-              key={index}
-              className="bg-zinc-700 text-zinc-300 text-sm font-medium px-3 py-1 rounded-full"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        <p className="text-zinc-200 text-base sm:text-lg mb-6">
-          {project.description}
-        </p>
-
-        <div className="flex space-x-6">
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center text-blue-400 hover:text-blue-300 transition-colors duration-200"
-            title="Ver Projeto Ao Vivo"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="mr-2"
-            >
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-              <polyline points="15 3 21 3 21 9"></polyline>
-              <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
-            <span className="text-lg">Deploy</span>
-          </a>
-
-          {project.githubUrl && (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center text-white hover:text-teal-600 transition-colors duration-200"
-              title="Ver no GitHub"
-            >
-              <FaGithub className="m-1 text-2xl" />{" "}
-              <span className="text-lg">GitHub</span>
-            </a>
-          )}
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
 function ProjectsSection() {
-  const transition = {
-    duration: 0.6,
-    delay: 0.4,
-    ease: [1, 0.71, 0.2, 1.01],
-  };
+  const rootRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      // Heading entrance
+      const heading = rootRef.current.querySelector(".proj-heading");
+      if (heading) {
+        gsap.from(heading.querySelectorAll(".proj-heading-line"), {
+          yPercent: 110,
+          opacity: 0,
+          stagger: 0.1,
+          duration: 0.9,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: heading,
+            start: "top 80%",
+          },
+        });
+      }
+
+      // Per-card reveal
+      const cards = gsap.utils.toArray(".proj-card");
+      cards.forEach((card) => {
+        const image = card.querySelector(".proj-image-wrap");
+        const imageInner = card.querySelector(".proj-image-inner");
+        const indexNum = card.querySelector(".proj-index");
+        const title = card.querySelector(".proj-title");
+        const meta = card.querySelectorAll(".proj-meta-item");
+        const tags = card.querySelectorAll(".proj-tag");
+        const desc = card.querySelector(".proj-desc");
+        const ctas = card.querySelectorAll(".proj-cta");
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: card,
+            start: "top 75%",
+          },
+        });
+
+        tl.from(image, {
+          clipPath: "inset(0% 0% 100% 0%)",
+          duration: 0.9,
+          ease: "power3.out",
+        })
+          .from(
+            imageInner,
+            { scale: 1.25, duration: 1.2, ease: "power2.out" },
+            "<"
+          )
+          .from(
+            indexNum,
+            { yPercent: 100, opacity: 0, duration: 0.7, ease: "power3.out" },
+            "<0.1"
+          )
+          .from(
+            title,
+            { yPercent: 100, opacity: 0, duration: 0.7, ease: "power3.out" },
+            "<0.05"
+          )
+          .from(
+            meta,
+            { y: 16, opacity: 0, stagger: 0.06, duration: 0.45 },
+            "<0.1"
+          )
+          .from(
+            tags,
+            { y: 16, opacity: 0, stagger: 0.05, duration: 0.45, ease: "back.out(2)" },
+            "<"
+          )
+          .from(
+            desc,
+            { y: 16, opacity: 0, duration: 0.5 },
+            "<0.05"
+          )
+          .from(
+            ctas,
+            { y: 16, opacity: 0, stagger: 0.07, duration: 0.45 },
+            "<"
+          );
+
+        // Subtle parallax on image while card is in view
+        gsap.to(imageInner, {
+          yPercent: -8,
+          ease: "none",
+          scrollTrigger: {
+            trigger: card,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      });
+    }, rootRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <div
+    <section
       id="projects"
-      className="min-h-screen bg-black text-white font-sans flex flex-col items-center py-10 px-4 sm:px-6 lg:px-8"
+      ref={rootRef}
+      className="relative text-white py-20 sm:py-24 px-4 sm:px-8 lg:px-16 overflow-hidden"
     >
-      <div className="container mx-auto flex flex-col lg:flex-row gap-8 lg:gap-12 w-full">
-        <div className="w-full text-center lg:text-left mt-6 text-teal-700">
-          <motion.h1
-            initial={{ rotate: 10, opacity: 0 }}
-            whileInView={{ rotate: 0, opacity: 1 }}
-            transition={transition}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-teal-700 mt-6"
-          >
-            Meus Projetos
-          </motion.h1>
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mt-1">
-            Confira alguns dos meus trabalhos!
+      {/* Heading */}
+      <div className="proj-heading relative max-w-7xl mx-auto mb-16 sm:mb-24">
+        <div className="overflow-hidden">
+          <div className="proj-heading-line flex items-center gap-3 text-[10px] sm:text-xs uppercase tracking-[0.3em] text-teal-400">
+            <span className="inline-block h-px w-8 sm:w-10 bg-teal-400" />
+            <span>§ 03 — Selected Work</span>
+          </div>
+        </div>
+        <div className="overflow-hidden mt-4 sm:mt-6">
+          <h2 className="proj-heading-line text-5xl sm:text-7xl md:text-8xl font-bold tracking-tight leading-[0.9]">
+            Meus <span className="text-teal-500 italic">Projetos</span>
           </h2>
-          <hr className="m-2 border-teal-700" />
+        </div>
+        <div className="overflow-hidden mt-3 sm:mt-4">
+          <p className="proj-heading-line text-sm sm:text-base text-gray-400 max-w-md">
+            Uma seleção dos meus trabalhos recentes — produtos, ferramentas e
+            experimentos.
+          </p>
         </div>
       </div>
 
-      <div>
-        {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
+      {/* Cards stack */}
+      <div className="relative max-w-7xl mx-auto flex flex-col gap-20 sm:gap-32 lg:gap-40">
+        {projects.map((p, i) => {
+          const isReversed = i % 2 === 1;
+          return (
+            <article
+              key={p.id}
+              className={`proj-card relative grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center ${
+                isReversed ? "lg:[direction:rtl]" : ""
+              }`}
+            >
+              {/* Image */}
+              <div className="lg:col-span-7 [direction:ltr] w-full">
+                <div
+                  className="proj-image-wrap relative w-full aspect-[16/10] overflow-hidden border border-white/10 bg-zinc-900"
+                  style={{ clipPath: "inset(0% 0% 0% 0%)" }}
+                >
+                  <div className="proj-image-inner absolute inset-0">
+                    <img
+                      src={p.image}
+                      alt={`Preview do projeto ${p.title}`}
+                      className="h-full w-full object-cover"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src =
+                          "https://placehold.co/800x500/0f172a/14b8a6?text=" +
+                          encodeURIComponent(p.title);
+                      }}
+                    />
+                  </div>
+                  <span className="absolute top-2 left-2 h-3 w-3 border-t border-l border-teal-400" />
+                  <span className="absolute top-2 right-2 h-3 w-3 border-t border-r border-teal-400" />
+                  <span className="absolute bottom-2 left-2 h-3 w-3 border-b border-l border-teal-400" />
+                  <span className="absolute bottom-2 right-2 h-3 w-3 border-b border-r border-teal-400" />
+                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 text-[9px] sm:text-[10px] tracking-[0.3em] uppercase text-teal-300 bg-black/50 backdrop-blur px-2 py-1">
+                    {p.year} · live
+                  </div>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="lg:col-span-5 [direction:ltr] flex flex-col gap-5 sm:gap-6">
+                <div className="flex items-baseline gap-4 overflow-hidden">
+                  <span className="proj-index inline-block text-4xl sm:text-5xl font-bold text-teal-500 leading-none tabular-nums">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-gray-500">
+                    — {p.discipline}
+                  </span>
+                </div>
+
+                <div className="overflow-hidden">
+                  <h3 className="proj-title text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight">
+                    {p.title}
+                  </h3>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gray-400">
+                  <span className="proj-meta-item">
+                    <span className="text-teal-500">Cliente / </span>
+                    {p.client}
+                  </span>
+                  <span className="proj-meta-item">
+                    <span className="text-teal-500">Ano / </span>
+                    {p.year}
+                  </span>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {p.tags.map((t, idx) => (
+                    <span
+                      key={idx}
+                      className="proj-tag inline-flex items-center gap-1.5 px-3 py-1 text-[10px] sm:text-xs uppercase tracking-wider border border-white/15 text-gray-200 hover:border-teal-400 hover:text-teal-300 transition-colors"
+                    >
+                      <span className="h-1 w-1 bg-teal-400 rounded-full" />
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <p className="proj-desc text-sm sm:text-base text-gray-300 leading-relaxed">
+                  {p.description}
+                </p>
+
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-2">
+                  <a
+                    href={p.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="proj-cta group relative inline-flex items-center gap-2 sm:gap-3 bg-teal-500 text-black px-4 sm:px-5 py-2.5 sm:py-3 text-[11px] sm:text-xs uppercase tracking-[0.2em] font-bold overflow-hidden hover:bg-teal-400 transition-colors"
+                  >
+                    <span>Ver Deploy</span>
+                    <FaArrowRight className="text-xs transition-transform group-hover:translate-x-1" />
+                  </a>
+                  {p.githubUrl && (
+                    <a
+                      href={p.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="proj-cta inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 text-[11px] sm:text-xs uppercase tracking-[0.2em] font-bold border border-white/20 text-white hover:border-teal-400 hover:text-teal-300 transition-colors"
+                    >
+                      <FaGithub className="text-base" />
+                      Source
+                    </a>
+                  )}
+                </div>
+              </div>
+            </article>
+          );
+        })}
       </div>
-    </div>
+    </section>
   );
 }
 
