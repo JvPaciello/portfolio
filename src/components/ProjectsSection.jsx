@@ -6,8 +6,20 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
-  {
+{
     id: 1,
+    title: "BlueVecHub Landing page",
+    client: "BlueVecHub",
+    year: "2026",
+    discipline: "Site institucional",
+    tags: ["React", "TypeScript", "GSAP", "Tailwind CSS"],
+    description:
+      "Site institucional para empresa de inspeção e engenharia offshore. Inclui animações de scroll com GSAP, seções com vídeo em destaque, sistema multilíngue (PT/EN/DE/ES) e formulário de contato integrado.",
+    liveUrl: "https://www.bluevechub.com/",
+    image: "/assets/bluevechub-welcome.png",
+  },
+  {
+    id: 2,
     title: "Adote Com Amor",
     client: "Comunidade de Adoção",
     year: "2023",
@@ -20,7 +32,7 @@ const projects = [
     image: "/assets/adote-com-amor.png",
   },
   {
-    id: 2,
+    id: 3,
     title: "Converter PDF BR",
     client: "Ferramentas Digitais",
     year: "2024",
@@ -33,7 +45,7 @@ const projects = [
     image: "/assets/converter-pdf-br.png",
   },
   {
-    id: 3,
+    id: 4,
     title: "Udacity Final Project",
     client: "Udacity Student",
     year: "2022",
@@ -46,7 +58,7 @@ const projects = [
     image: "/assets/udacity-final-captura.png",
   },
   {
-    id: 4,
+    id: 5,
     title: "Estante Digital",
     client: "Leitores Independentes",
     year: "2022",
@@ -59,7 +71,7 @@ const projects = [
     image: "/assets/estante.vercel.app_.png",
   },
   {
-    id: 5,
+    id: 6,
     title: "Perguntas & Respostas",
     client: "Projeto de Curso",
     year: "2023",
